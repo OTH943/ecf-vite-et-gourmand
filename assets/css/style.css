@@ -1,127 +1,248 @@
-/* --- Définition des variables de couleurs (Charte graphique) --- */
+/* ================= IMPORT DES POLICES ================= */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+
+/* ================= VARIABLES (CHARTE GRAPHIQUE) ================= */
 :root {
-    --primary-color: #800020; /* Le rouge bordeaux du fond */
-    --secondary-color: #D4AF37; /* Le doré des textes et logos */
-    --text-light: #ffffff; /* Blanc pour le footer */
-    --text-dark: #333333; /* Noir pour le contenu principal */
+    --primary-color: #800020;  /* Le rouge bordeaux */
+    --secondary-color: #D4AF37; /* Le doré */
+    --text-light: #ffffff;      /* Blanc */
+    --text-dark: #333333;
 }
 
+/* ================= RESET GLOBAL (OBLIGATOIRE) ================= */
+/* Ceci enlève TOUTES les marges blanches et les styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Empêche le scroll horizontal */
+}
 
-/* ================= HEADER (Maquette) ================= */
+/* TUE les liens bleus et soulignés partout sur le site */
+a, a:visited, a:hover, a:active {
+    text-decoration: none !important;
+    color: inherit; /* Force le lien à prendre la couleur définie dans le parent */
+}
+
+ul {
+    list-style: none; /* Enlève les puces des listes */
+}
+
+/* ================= HEADER ================= */
 .site-header {
     background-color: var(--primary-color);
-    padding: 20px 40px;
-    color: var(--secondary-color);
-    font-weight: 500;
+    padding: 15px 40px;
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    position: relative; /* Important pour le menu mobile */
 }
 
 .header-container {
-    display: flex;
-    justify-content: space-between; /* Espace entre gauche, centre, droite */
-    align-items: flex-start; /* Aligne en haut */
-    max-width: 1200px;
-    margin: 0 auto; /* Centre le tout sur les grands écrans */
+    display: grid;
+    /* Grille 3 colonnes : Gauche | Centre (selon contenu) | Droite */
+    grid-template-columns: 1fr max-content 1fr; 
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* Partie Gauche (Accueil) */
+/* 1. Bloc Gauche (Burger) */
 .header-left {
-    flex: 1; /* Prend un tiers de l'espace */
-    padding-top: 20px; /* Ajustement pour aligner avec les autres liens */
+    justify-self: start; /* Colle le burger tout à gauche */
 }
 
-/* Partie Centrale (Logo + Liens) */
+/* Style du bouton Burger (caché sur PC) */
+.burger-menu {
+    display: none; /* Caché par défaut sur ordinateur */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.burger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--secondary-color); /* Doré */
+    border-radius: 3px;
+}
+
+/* 2. Bloc Central (Logo + Menu) */
 .header-center {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centre le logo horizontalement */
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    justify-self: center;
 }
 
 .logo-img {
-    max-width: 150px; /* Taille du logo */
-    margin-bottom: 15px;
+    width: 220px;
+    height: auto;
+    /* Réduit la marge pour remonter le texte "un peu plus haut" */
+    margin-bottom: 10px; 
+    display: block;
 }
 
+/* Menu de navigation */
 .center-nav ul {
     display: flex;
-    gap: 40px; /* Espace entre "Nos menus" et "Contact" */
-    font-size: 1.1rem;
+    /* Écarte les liens comme sur la maquette Figma */
+    gap: 60px; 
+    padding: 0;
+    margin: 0;
+    justify-content: center;
 }
 
-/* Partie Droite (Connexion + Panier) */
+.center-nav a {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.center-nav a:hover {
+    color: var(--text-light);
+}
+
+/* 3. Bloc Droite (Connexion + Panier) */
 .header-right {
-    flex: 1;
     display: flex;
-    justify-content: flex-end; /* Aligne tout à droite */
+    justify-content: flex-end;
     align-items: center;
-    gap: 25px; /* Espace entre Connexion et l'icône panier */
-    padding-top: 20px;
+    gap: 25px;
 }
 
 .connexion-link {
-    position: relative; /* Pour la petite barre en dessous */
-    padding-bottom: 5px;
+    color: var(--secondary-color); 
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    
+    /* LE TRAIT BLANC */
+    border-bottom: 1px solid #ffffff; 
+    padding-bottom: 5px; 
+    display: inline-block; 
+    transition: 0.3s;
 }
 
-/* La petite barre dorée sous "Connexion" */
-.connexion-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--secondary-color);
+/* petit effet au survol */
+.connexion-link:hover {
+    color: #ffffff; 
+    border-bottom-color: var(--secondary-color);
 }
 
-.cart-icon img {
-    width: 24px; /* Taille de l'icône panier */
-    height: auto;
+.header-right img {
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain;
+    cursor: pointer;
 }
 
-/* ================= FOOTER (Maquette) ================= */
+/* ================= RESPONSIVE (MOBILE) ================= */
+@media (max-width: 900px) {
+    .site-header {
+        padding: 15px 20px;
+    }
+
+    /* Le logo devient un peu plus petit sur mobile */
+    .logo-img {
+        width: 150px;
+        margin-bottom: 0; /* Plus besoin de marge car le menu n'est plus en dessous */
+    }
+
+    /* On affiche le burger */
+    .burger-menu {
+        display: flex;
+    }
+
+    /* On cache le menu "normal" */
+    .center-nav {
+        display: none; /* Caché par défaut */
+        position: absolute;
+        top: 100%; /* Juste en dessous du header */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 20px;
+        border-bottom: 1px solid var(--secondary-color);
+        z-index: 1000;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    /* Quand on clique sur le burger (via JS), on ajoute la classe .active */
+    .center-nav.active {
+        display: block;
+    }
+
+    .center-nav ul {
+        flex-direction: column; /* Menu vertical */
+        gap: 20px;
+    }
+    
+    /* On cache le texte "Connexion" sur mobile pour gagner de la place (optionnel) ? */
+    /* .connexion-link { display: none; } <--- Décommente si tu veux juste l'icône */
+}
+
+/* ================= FOOTER (BAS DE PAGE) ================= */
 .site-footer {
     background-color: var(--primary-color);
     color: var(--text-light);
-    padding: 50px 40px 20px; /* Plus d'espace en haut */
-    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif; /* Police demandée pour le footer */
+    padding-top: 60px;
+    padding-bottom: 20px;
+    margin-top: 50px; /* Espace avec le contenu du dessus */
 }
 
 .footer-container {
     display: flex;
-    justify-content: space-between; /* Répartit les 4 colonnes */
-    flex-wrap: wrap; /* Passe à la ligne sur mobile */
-    gap: 40px;
+    justify-content: space-between;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 40px; /* Espace avant les réseaux sociaux */
+    padding: 0 20px;
+    gap: 40px;
 }
 
 .footer-col {
-    flex: 1; /* Chaque colonne a la même largeur */
-    min-width: 200px; /* Largeur minimum pour ne pas être trop écrasé */
+    flex: 1;
+    min-width: 200px;
 }
 
 .footer-col h3 {
     color: var(--secondary-color); /* Titres en doré */
-    margin-bottom: 20px;
     font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
-.footer-col p, .footer-col li {
-    margin-bottom: 10px;
-    line-height: 1.5; /* Espace entre les lignes */
+.footer-col p, 
+.footer-col li {
+    font-size: 0.9rem;
+    line-height: 1.8; /* Aère le texte */
+    color: #f0f0f0;
 }
 
-/* Bouton "Contactez nous" */
+.footer-col li {
+    margin-bottom: 8px;
+}
+
+/* Le bouton Contact */
 .btn-contact {
     display: inline-block;
-    border: 1px solid var(--text-light);
-    padding: 8px 15px;
     margin-top: 15px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border: 1px solid var(--text-light);
+    color: var(--text-light);
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
@@ -132,24 +253,131 @@
     font-weight: bold;
 }
 
-/* Logo du footer */
+/* Logo dans le footer */
 .footer-logo {
-    max-width: 180px;
-    margin-top: 30px;
+    width: 120px;
+    margin-top: 20px;
 }
 
-/* Section Réseaux Sociaux (en bas) */
+/* Section Réseaux Sociaux (Tout en bas) */
 .footer-bottom {
-    display: flex;
-    justify-content: center; /* Centre les icônes */
-    gap: 20px;
+    margin-top: 50px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1); /* Petit trait de séparation */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation fine */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .social-icon img {
-    width: 30px;
-    height: 30px;
-    /* Astuce pour colorer des icônes noires en doré (si ce sont des PNG transparents) */
+    width: 24px;
+    height: 24px;
+    object-fit: contain; /* Empêche l'écrasement */
+    transition: transform 0.3s;
+    /* Filtre doré pour les icônes noires */
     filter: invert(75%) sepia(31%) saturate(889%) hue-rotate(1deg) brightness(98%) contrast(89%);
+}
+
+.social-icon img:hover {
+    transform: scale(1.1); /* Petit zoom au survol */
+}
+
+
+/* ================= PAGE INSCRIPTION ================= */
+
+/* Le conteneur gris qui centre le formulaire */
+.registration-container {
+    background-color: #F5F5F5; /* Fond gris clair demandé */
+    max-width: 600px; /* Largeur idéale pour un formulaire */
+    margin: 60px auto; /* Centré au milieu de la page avec de l'espace haut/bas */
+    padding: 40px;
+    border-radius: 8px; /* Coins légèrement arrondis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Ombre très légère pour le relief */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Titre "Créer un compte" */
+.registration-container h1 {
+    color: #800020; /* Bordeaux demandé */
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Espacement entre les champs */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Les libellés (Nom, Prénom...) */
+.registration-container label {
+    display: block;
+    color: #800020; /* Bordeaux demandé */
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* Les champs de saisie */
+.registration-container input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif; /* Police lisible pour l'écriture */
+    background-color: #ffffff;
+    transition: 0.3s;
+}
+
+/* Effet quand on clique dans un champ */
+.registration-container input:focus {
+    border-color: #800020; /* Bordure devient bordeaux */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.1); /* Petit halo bordeaux */
+}
+
+/* Mise en page pour Ville et Pays sur la même ligne */
+.two-cols {
+    display: flex;
+    gap: 20px;
+}
+.two-cols .form-group {
+    flex: 1; /* Chaque colonne prend la moitié de la place */
+}
+
+/* Le Bouton Vert */
+.btn-submit {
+    display: block;
+    width: 100%;
+    background-color: #2E8B57; /* Vert SeaGreen demandé */
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #246B44; /* Vert un peu plus foncé au survol */
+}
+
+/* Responsive pour mobile */
+@media (max-width: 600px) {
+    .registration-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .two-cols {
+        flex-direction: column; /* Ville et Pays passent l'un sous l'autre sur mobile */
+        gap: 0;
+    }
 }

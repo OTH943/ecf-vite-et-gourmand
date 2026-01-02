@@ -14,7 +14,7 @@
 
                 <a href="#" class="btn-contact">Contactez nous</a>
 
-                <img src="/assets/images/logo_vite_et_gourmand.png" alt="Vite & Gourmand" class="footer-logo">
+                <img src="../assets/images/logo_vite_et_gourmand.png" alt="Vite & Gourmand" class="footer-logo">
 
             </div>
 
@@ -54,11 +54,11 @@
 
         <div class="footer-bottom">
 
-            <a href="#" class="social-icon"><img src="/assets/images/icon-linkedin.png" alt="LinkedIn"></a>
+            <a href="#" class="social-icon"><img src="../assets/images/icon-linkedin.png" alt="LinkedIn"></a>
 
-            <a href="#" class="social-icon"><img src="/assets/images/icon-instagram.png" alt="Instagram"></a>
+            <a href="#" class="social-icon"><img src="../assets/images/icon-instagram.png" alt="Instagram"></a>
 
-            <a href="#" class="social-icon"><img src="/assets/images/icon-facebook.png" alt="Facebook"></a>
+            <a href="#" class="social-icon"><img src="../assets/images/icon-facebook.png" alt="Facebook"></a>
 
         </div>
 

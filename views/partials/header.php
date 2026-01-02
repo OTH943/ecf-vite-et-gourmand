@@ -10,45 +10,43 @@
 
         <title>Vite & Gourmand - Traiteur en ligne</title>
 
-        <link rel="stylesheet" href="/assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
 
     </head>
 
     <body>
 
-    <header class="site-header">
+   <header class="site-header">
 
         <div class="header-container">
-
+        
             <div class="header-left">
 
-                <nav>
+                <div class="burger-menu" onclick="toggleMenu()">
 
-                    <ul>
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
-                        <li><a href="/vite_et_gourmand/index.php">Accueil</a></li>
+                </div>
 
-                    </ul>
-
-                </nav>
-
-            </div>
+            </div> 
 
             <div class="header-center">
 
-                <a href="/vite_et_gourmand/index.php">
+                <a href="index.php">
 
-                    <img src="/assets/images/logo_vite_et_gourmand.png" alt="Vite & Gourmand" class="logo-img">
+                    <img src="../assets/images/logo_vite_et_gourmand.png" alt="Logo" class="logo-img">
 
                 </a>
 
-                <nav class="center-nav">
+                <nav class="center-nav" id="mobileNav">
 
                     <ul>
 
-                        <li><a href="#">Nos menus</a></li>
-
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="index.php">Accueil</a></li>
+                        <li><a href="menus.php">Nos Menus</a></li>
+                        <li><a href="contact.php">Contact</a></li>
 
                     </ul>
 
@@ -58,19 +56,11 @@
 
             <div class="header-right">
 
-                <nav>
-
-                    <ul>
-
-                        <li><a href="/vite_et_gourmand/views/connexion.php" class="connexion-link">Connexion</a></li>
-
-                    </ul>
-
-                </nav>
+                <a href="connexion.php" class="connexion-link">Connexion</a>
 
                 <div class="cart-icon">
 
-                    <a href="#"><img src="/assets/images/icon-panier.png" alt="Panier"></a>
+                    <img src="../assets/images/icon-panier.png" alt="Panier">
 
                 </div>
 
@@ -79,5 +69,16 @@
         </div>
 
     </header>
+
+    <script>
+
+    function toggleMenu() {
+
+        const nav = document.getElementById('mobileNav');
+        nav.classList.toggle('active');
+
+    }
+
+    </script>
 
 <main>
