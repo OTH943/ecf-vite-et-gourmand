@@ -9,8 +9,6 @@
     --text-dark: #333333;
 }
 
-/* ================= RESET GLOBAL (OBLIGATOIRE) ================= */
-/* Ceci enlève TOUTES les marges blanches et les styles par défaut */
 * {
     margin: 0;
     padding: 0;
@@ -30,6 +28,21 @@ a, a:visited, a:hover, a:active {
 
 ul {
     list-style: none; /* Enlève les puces des listes */
+}
+
+body {
+   
+    font-family: 'Montserrat', sans-serif; 
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff; /* Ou ta couleur de fond globale */
+}
+
+/* Force les champs et boutons à utiliser aussi la police */
+input, button, textarea, select {
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* ================= HEADER ================= */
@@ -380,4 +393,166 @@ ul {
         flex-direction: column; /* Ville et Pays passent l'un sous l'autre sur mobile */
         gap: 0;
     }
+}
+
+
+/* ================= FORMULAIRES (Connexion & Inscription) ================= */
+
+/* Le conteneur blanc centré */
+.auth-container {
+    max-width: 450px;
+    margin: 50px auto; /* Centré verticalement et horizontalement */
+    padding: 30px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Légère ombre */
+    border-radius: 10px;
+}
+
+.auth-title {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+/* Les groupes (Label + Input) */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--secondary-color); /* Devient doré quand on clique dedans */
+    outline: none;
+}
+
+/* Le bouton */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+.btn-submit:hover {
+    background-color: #b88e4a; /* Un peu plus foncé au survol */
+}
+
+.btn-submit:active {
+    transform: scale(0.98); /* Petit effet de clic */
+}
+
+/* Les messages d'alerte (Succès / Erreur) */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Le lien en bas */
+.auth-footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9em;
+}
+
+.auth-link {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+/* ================= PAGE PROFIL ================= */
+
+/* Le conteneur principal du profil */
+.profile-card {
+    background-color: #F5F5F5; /* Fond Gris clair demandé */
+    color: #800020; /* Texte Bordeaux demandé */
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 12px; /* Coins arrondis */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* Ombre douce */
+    border: 1px solid #e0e0e0;
+}
+
+/* Les titres dans la carte profil */
+.profile-card h1, 
+.profile-card h2, 
+.profile-card h3 {
+    color: #800020; /* Titres en bordeaux */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2E8B57; /* Petit trait vert sous le titre */
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* La liste des infos */
+.profile-info {
+    margin-bottom: 30px;
+    font-size: 1.1rem; /* Texte un peu plus gros */
+}
+
+.profile-info p {
+    margin-bottom: 15px;
+}
+
+.profile-info strong {
+    font-weight: 700;
+}
+
+/* Le bouton de déconnexion spécifique */
+.btn-logout {
+    background-color: #2E8B57; /* Vert demandé */
+    color: white; /* Texte blanc pour le contraste */
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-logout:hover {
+    background-color: #236b45; /* Vert un peu plus foncé au survol */
+    color: white;
 }
